@@ -1,0 +1,90 @@
+<p>
+        <style>
+                .head {
+                    border-top: 1px solid rgb(67,111,136);
+                    background-image:
+                    linear-gradient(rgb(32,32,32), rgb(23,23,23));
+                    color:aliceblue;
+                    height: 45px;
+                    width: 100%;
+                    margin-top: -16px;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
+
+
+                .username {
+                  position: absolute;
+                  right: 0;
+                  font-weight: bold;
+                  color: white;
+                  text-decoration: none;
+                  text-shadow: 0 -1px 1px #adadad;
+                  user-select: none;
+                  padding: .6em 2em;
+                  outline: none;
+                  height: 43px;
+                  border-radius: 1px;
+                  background: linear-gradient(to left, rgba(0,0,0,.3), rgba(0,0,0,.0) 50%, rgba(0,0,0,.3)), linear-gradient(#989898, #565656, #dadada);
+                  background-size: 100% 100%, auto;
+                  background-position: 50% 50%;
+                  box-shadow: inset #121212 0 -1px 1px, inset 0 1px 1px #666666, #222222 0 0 0 1px, #000 0 10px 15px -10px;
+                  transition: 0.2s;
+                }
+                .username:hover {
+                  background-size: 140% 100%, auto;
+                }
+                .username:active {
+                  top: 1px;
+                  color: #999999;
+                  box-shadow: inset #adadad 0 -1px 1px, inset 0 1px 1px #667766, #ffeeee 0 0 0 1px, 0 10px 10px -9px #000;
+                }
+                
+                a.button {
+                  display: inline-block;
+                  font-size: 12px;
+                  color: rgb(205,216,228);
+                  line-height: 3em;
+                  height: 40px;
+                  text-decoration: none;
+                  padding: .2em .8em;
+                  outline: none;
+                  border-right: 1px solid rgba(13,20,27,.5);
+                  border-top: 1px solid rgba(270,278,287,.01);
+                  background-color: rgb(64,73,82);
+                  background-image:
+                   radial-gradient(1px 60% at 0% 50%, rgba(255,255,255,.3), transparent),
+                   radial-gradient(1px 60% at 100% 50%, rgba(255,255,255,.3), transparent),
+                   linear-gradient(rgb(64,73,82), rgb(72,81,90));
+                }
+                a.button:hover {
+                  background-image:
+                   radial-gradient(1px 60% at 0% 50%, rgba(255,255,255,.3), transparent),
+                   radial-gradient(1px 60% at 100% 50%, rgba(255,255,255,.3), transparent),
+                   linear-gradient(rgb(51,60,67), rgb(58,65,72));
+                }
+                a.button:focus {
+                  color: rgb(245,247,250);
+                  border-top: 1px solid rgb(67,111,136);
+                  background-image:
+                   linear-gradient(rgb(46,95,122), rgb(36,68,92));
+                }
+                a.button:focus:hover {
+                  border-top: 1px solid rgb(49,87,107);
+                  background-image:
+                   linear-gradient(rgb(33,77,98), rgb(29,57,77));
+                }
+
+            </style>
+    <div class="head">
+            
+        {% if not user.is_authenticated or user.is_superuser%}
+            <a href="/auth" class="button">LOG IN</a>
+        {% else %}
+            <span class="username">{{user.username}}</span>
+            <a href="/logout" class="button">LOGOUT</a>  
+            <a href="/questionnaire" class="button">QUEST</a>
+        {% endif %}
+        <a href="/" class="button">HOME</a>
+        <a href="/rating" class="button">RATING</a>
+    </div>
+</p>
